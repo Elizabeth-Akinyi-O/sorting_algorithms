@@ -35,7 +35,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	pivot = array + high;
 	for (first = last = low; last < high; last++)
 	{
-		if (array[last] <= *pivot)
+		if (array[last] < *pivot)
 		{
 			if (first < last)
 			{
@@ -62,15 +62,15 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  * @low: lowest value of the array
  * @size: size of the array
  */
-void lomuto_quick_sort(int *array, int high, int low, size_t size)
+void lomuto_quick_sort(int *array, int low, int high, size_t size)
 {
 	int q;
 
 	if (high - low > 0)
 	{
-		q = lomuto_partition(array, low, high, size);
-		lomuto_quick_sort(array, low, q - 1, size);
-		lomuto_quick_sort(array, q + 1, high, size);
+		q = lomuto_partition(array, size, low, high);
+		lomuto_quick_sort(array, size, low, q - 1);
+		lomuto_quick_sort(array, size, q + 1, high);
 	}
 }
 
@@ -85,5 +85,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	lomuto_quick_sort(array, 0, size - 1, size);
+	lomuto_quick_sort(array, size, 0, size - 1);
 }
