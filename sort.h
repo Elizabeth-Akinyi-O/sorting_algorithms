@@ -5,6 +5,19 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#define UP 0
+#define DOWN 1
+
+/**
+ * enum bool - enumeration of boolean values
+ * @false: equals 0
+ * @true: equals 1
+ */
+typedef enum bool
+{
+	false = 0,
+	true
+} bool;
 
 /**
  * struct listint_s - Doubly linked list node
