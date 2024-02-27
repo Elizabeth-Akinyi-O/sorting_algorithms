@@ -59,11 +59,11 @@ void hoare_quick_sort(int *array, int low, int high, size_t size)
 {
 	int q;
 
-	if (high - low > 0)
+	if (low < high)
 	{
-		q = hoare_partition(array, size, low, high);
-		hoare_quick_sort(array, size, low, q - 1);
-		hoare_quick_sort(array, size, q, high);
+		q = hoare_partition(array, low, high, size);
+		hoare_quick_sort(array, low, q - 1, size);
+		hoare_quick_sort(array, q, high, size);
 	}
 }
 
@@ -78,5 +78,5 @@ void quick_sort_hoare(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	hoare_quick_sort(array, size, 0, size - 1);
+	hoare_quick_sort(array, 0, size - 1, size);
 }
